@@ -33,7 +33,7 @@ public class VerarbeitungImmobilienBewertungApplicationService implements Verarb
         ClusterScoringEvent immobilienFinanzierungsClusterErgebnis = immobilienFinanzierungsCluster.scoren();
         if(ClusterGescored.class.equals(immobilienFinanzierungsClusterErgebnis.getClass())) {
             ScoringErgebnis scoringErgebnis = scoringErgebnisRepository.lade(new Antragsnummer(immobilienBewertung.antragsnummer()));
-            scoringErgebnis.auskunfteiErgebnisClusterHinzufuegen((ClusterGescored) immobilienFinanzierungsClusterErgebnis);
+            scoringErgebnis.immobilienFinanzierungClusterHinzufuegen((ClusterGescored) immobilienFinanzierungsClusterErgebnis);
             AntragScoringEvent antragScoringEvent = scoringErgebnis.berechneErgebnis();
             if(AntragErfolgreichGescored.class.equals(antragScoringEvent.getClass())) {
                 scoringErgebnisVeroeffentlichen.preScoringErgebnisVeroeffentlichen((AntragErfolgreichGescored) antragScoringEvent);
